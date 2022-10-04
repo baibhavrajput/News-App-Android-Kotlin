@@ -1,6 +1,6 @@
 # News App
 
-News App is an Android app which is developed to display up to date news to the users.
+News App is an Android app developed to display up to date news to the users.
 
 ## Features
 - Users can see up to date news.
