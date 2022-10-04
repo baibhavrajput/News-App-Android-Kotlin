@@ -1,5 +1,6 @@
 package com.byfitnation.newsapp.ui
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -18,8 +19,13 @@ import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.collections.ArrayList
+import androidx.browser.customtabs.CustomTabsIntent
+import com.byfitnation.newsapp.models.Articles
+import com.byfitnation.newsapp.models.News
+import com.byfitnation.newsapp.utils.NewsItemClicked
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity()  {
 
     lateinit var navController: NavController
 
@@ -36,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         list.add(TechFragment())
 
         viewPager.adapter = NewsPagerAdapter(supportFragmentManager , lifecycle , list)
+
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = tabList[position]
         }.attach()
@@ -45,4 +52,6 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
+
 }

@@ -9,14 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.byfitnation.newsapp.R
 import com.byfitnation.newsapp.models.Articles
+import com.byfitnation.newsapp.models.News
 
-class NewsAdapter() : RecyclerView.Adapter<NewsViewHolder>(){
+class NewsAdapter(private val listener : NewsItemClicked) : RecyclerView.Adapter<NewsViewHolder>(){
 
     var articlesList : MutableList<Articles> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_news, parent, false)
-        return NewsViewHolder(view)
+        val viewHolder = NewsViewHolder(view)
+
+        view.setOnClickListener {
+            listener.onItemClicked(articlesList[viewHolder.adapterPosition])
+        }
+        return viewHolder
     }
 
     override fun getItemCount(): Int {
@@ -37,6 +44,10 @@ class NewsAdapter() : RecyclerView.Adapter<NewsViewHolder>(){
     }
 
 
+}
+
+interface NewsItemClicked{
+    fun onItemClicked(item : Articles)
 }
 
 class NewsViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {

@@ -1,6 +1,6 @@
 package com.byfitnation.newsapp.networking
 
-//import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.GlobalScope
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
